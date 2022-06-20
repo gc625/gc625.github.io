@@ -1,3 +1,6 @@
 [submodule "obsidiansite"]
 	path = obsidiansite
 	url = https://github.com/gc625/obsidiansite
+[submodule "public"]
+	path = public
+	url = https://github.com/gc625/obsidiansite
