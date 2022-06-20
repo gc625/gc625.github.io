@@ -1,4 +1,4 @@
-baseURL = "https://gc625.github.io/quartz/"
+baseURL = "https://gc625.github.io/"
 languageCode = "en-us"
 googleAnalytics = "G-XYFD95KB4J"
 pygmentsUseClasses = true
