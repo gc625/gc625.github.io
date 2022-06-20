@@ -1,3 +1,7 @@
+---
+title: "{{3DSSD: Point-based 3D Single Stage Object Detector
+}}"
+---
 # 3DSSD: Point-based 3D Single Stage Object Detector
 
 [arXiv link](https://arxiv.org/pdf/2002.10187.pdf) 
