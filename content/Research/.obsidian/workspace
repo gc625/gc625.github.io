@@ -1,0 +1,109 @@
+{
+  "main": {
+    "id": "40151feec5847b39",
+    "type": "split",
+    "children": [
+      {
+        "id": "13af9ce496875212",
+        "type": "leaf",
+        "state": {
+          "type": "markdown",
+          "state": {
+            "file": "Papers/PointNet++.md",
+            "mode": "source",
+            "source": false
+          }
+        }
+      }
+    ],
+    "direction": "vertical"
+  },
+  "left": {
+    "id": "a88088d5828777e1",
+    "type": "split",
+    "children": [
+      {
+        "id": "0454faf78df55601",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "7e0a2e7306fe2a3b",
+            "type": "leaf",
+            "state": {
+              "type": "file-explorer",
+              "state": {}
+            }
+          },
+          {
+            "id": "8a729e2103313b4c",
+            "type": "leaf",
+            "state": {
+              "type": "search",
+              "state": {
+                "query": "",
+                "matchingCase": false,
+                "explainSearch": false,
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical"
+              }
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300
+  },
+  "right": {
+    "id": "75ce7b0d9b77d22e",
+    "type": "split",
+    "children": [
+      {
+        "id": "e34b3c008214a632",
+        "type": "tabs",
+        "children": [
+          {
+            "id": "591fae6532fd24a3",
+            "type": "leaf",
+            "state": {
+              "type": "backlink",
+              "state": {
+                "file": "Papers/PointNet++.md",
+                "collapseAll": false,
+                "extraContext": false,
+                "sortOrder": "alphabetical",
+                "showSearch": false,
+                "searchQuery": "",
+                "backlinkCollapsed": false,
+                "unlinkedCollapsed": true
+              }
+            }
+          },
+          {
+            "id": "28de0942f8639623",
+            "type": "leaf",
+            "state": {
+              "type": "calendar",
+              "state": {}
+            }
+          }
+        ]
+      }
+    ],
+    "direction": "horizontal",
+    "width": 300,
+    "collapsed": true
+  },
+  "active": "13af9ce496875212",
+  "lastOpenFiles": [
+    "Papers/PointNet++.md",
+    "images/pointnet2.png",
+    "images/openpcdet_coordinate_sys.png",
+    "Papers/3DSSD.md",
+    "Pasted image 20220619083239.png",
+    "Pasted image 20220619083230.png",
+    "OpenPCDet.md",
+    "2022-06-19.md"
+  ]
+}
