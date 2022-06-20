@@ -1,6 +1,5 @@
 ---
-title: "{{3DSSD: Point-based 3D Single Stage Object Detector
-}}"
+title: "3DSSD: Point-based 3D Single Stage Object Detector"
 ---
 # 3DSSD: Point-based 3D Single Stage Object Detector
 
@@ -38,7 +37,7 @@ github #todo
 	3. grouping operation ([[PointNet++#Grouping Layer]])
 	4. MLP
 	5. MaxPool
-![[3dssd_backbone.png]]
+![[notes/research/images/3dssd_backbone.png]]
 
 #### SA1
 $[16384 \times 4] \to [4096 \times 128]$

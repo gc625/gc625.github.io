@@ -1,5 +1,5 @@
 ---
-title: "{{OpenPCDet}}"
+title: "OpenPCDet"
 ---
 # OpenPCDet 
 

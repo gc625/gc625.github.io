@@ -1,13 +1,13 @@
 ---
-title: "{{PointNet++}}"
+title: "PointNet++"
 ---
 # PointNet++
 
 
 
 ## Set Abstraction (SA) Layer
-![[pointnet2.png]]
 
+![[notes/research/images/pointnet2.png]]
 ### Grouping Layer
 - Sampling Layer $SL$ yields $N'\times 3$ points.
 	- $N'$ centroids and $3:= x,y,z$ coordinates 
