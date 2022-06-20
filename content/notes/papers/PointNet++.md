@@ -23,7 +23,22 @@ Lets call the sampling layer $SL$.
 		   dist_0 = 1.1
 		\end{align}$$
 		4. Finally, select the point with the greatest distance
-	3. Repeat step 2 $M-1$ more times>)
+	3. Repeat step 2 $M-1$ more times
+	- **1D Example:** lets perform steps 1 and 2 on array of points $P=[1,6,7,8,20]$, 
+		1. suppose the list of selected points $S=[7,20]$ , $P$ is now $[1,6,8]$
+		2. we calculate distances:
+		   $$\begin{align*}dist_1=[6,19]\\
+		   dist_6=[1,14]\\
+		   dist_8=[1,12]\\
+		   \end{align*}$$
+		3. perform $min (dist_i)$$$\begin{align*}dist_1=6\\
+		   dist_6=1\\
+		   dist_8=1\\
+		   \end{align*}$$
+		4. now select the point with highest distance. i.e. $$\underset{i}{\operatorname{argmax}}(dist_i)=1$$
+		5. So the next chosen point is 1. $S=[1,7,20]$ and $P=[6,8]$
+
+
 
 ### Grouping Layer
 - Sampling Layer $SL$ yields $N'\times 3$ points.
@@ -39,3 +54,6 @@ Lets call the sampling layer $SL$.
 			- what if points within radius is $<K$? 
 			- what if no points (only centroid point)?
 			- with if more than $K$ points?  
+
+
+
