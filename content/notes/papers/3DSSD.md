@@ -8,7 +8,7 @@ github #todo
 
 ## Main Ideas:
 -  Introduced **Feature-Farthest Point Sampling (F-FPS)**
-- Introduced **Fusion Sampling** in [[PointNet++#Set Abstraction SA Layer]]
+- Introduced new sampling method called **Fusion Sampling** in [[notes/papers/PointNet++#Set Abstraction SA Layer]]
 
 
 ### Feature-Farthest Point Sampling (F-FPS)
@@ -33,7 +33,7 @@ github #todo
 - want to output $N_{i+1}$ points, where $N_{i+1}$ points are subset of the $N_i$ points
 	1. F-FPS$: N_i \to \frac{N_{i+1}}{2}$ #Q
 	2. D-FPS:$N_i \to \frac{N_{i+1}}{2}$ #Q
-	3. grouping operation ([[PointNet++#Grouping Layer]])
+	3. grouping operation ([[notes/papers/PointNet++#Grouping Layer]])
 	4. MLP
 	5. MaxPool
 
