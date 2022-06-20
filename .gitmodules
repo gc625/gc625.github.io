@@ -1,0 +1,3 @@
+[submodule "obsidiansite"]
+	path = obsidiansite
+	url = https://github.com/gc625/obsidiansite
