@@ -34,10 +34,9 @@ $$w=w -\alpha \frac{d}{dw}J(w,b)$$ where $\alpha$ is the learning rate, a **hype
 - If $\alpha$ is too large, then it might never reach the minimum 
 
 # Gradient Descent for linear regression
-Calculating derivatives for $w$
-$$\frac{d}{dw}J(w,b)=\frac{d}{dw}\frac{1}{2m}\sum^{m}_{i=1}(\hat{y}^{(i)}-y^{(i)})^2= \frac{d}{dw}\frac{1}{2m}\sum^{m}_{i=1}(wx^{(i)}+b-y^{(i)})^2$$
+Calculating derivatives for $w$, $$\frac{d}{dw}J(w,b)=\frac{d}{dw}\frac{1}{2m}\sum^{m}_{i=1}(\hat{y}^{(i)}-y^{(i)})^2= \frac{d}{dw}\frac{1}{2m}\sum^{m}_{i=1}(wx^{(i)}+b-y^{(i)})^2$$
 which is equal to 
-$$=\frac{1}{m}\sum^{m}_{i=1}(f_{w,b}(x^{(i)}-y^{(i)})x^{(i)}$$ and derivative for $b$ 
+$$=\frac{1}{m}\sum^{m}_{i=1}(f_{w,b}(x^{(i)}-y^{(i)})x^{(i)}$$ and derivative for $b$, 
 $$\frac{d}{db}J(w,b)=\frac{d}{dw}\frac{1}{2m}\sum^{m}_{i=1}(\hat{y}^{(i)}-y^{(i)})^2= \frac{d}{db}\frac{1}{2m}\sum^{m}_{i=1}(wx^{(i)}+b-y^{(i)})^2$$
 which is equal to 
 $$=\frac{1}{m}\sum^{m}_{i=1}(f_{w,b}(x^{(i)})-y^{(i)})$$
