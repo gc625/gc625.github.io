@@ -39,6 +39,7 @@ github #todo
 
 ![[notes/images/3dssd_backbone.png]]
 #### SA1
+
 $[16384 \times 4] \to [4096 \times 128]$
 
 ####  SA2 

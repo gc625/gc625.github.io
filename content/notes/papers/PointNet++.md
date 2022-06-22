@@ -51,5 +51,17 @@ Lets call the sampling layer $SL$.
 			- what if no points (only centroid point)?
 			- with if more than $K$ points?  
 
+#### Multi-scale grouping (MSG)
 
+#### Multi-resolution grouping (MRG)
+
+### PointNet Layer
+essentially just a FC layer on each "ball" of points
+- Input $(N'\times K \times (3+C))$.
+	- $N'$ local regions (balls of points)
+	- $K$ is num of balls in the ball
+	- $3+C = x,y,z+C \text{ features}$
+- Output: $(N'\times (3+C'))$ 
+- Method: 
+	- for each point $x_j$ in a ball, transform it into a local coordinate frame relative to its centroid $\hat{x}$ $$x^{new}_j = x_j-\hat{x}$$
 
