@@ -34,12 +34,14 @@ $$w=w -\alpha \frac{d}{dw}J(w,b)$$ where $\alpha$ is the learning rate, a **hype
 - If $\alpha$ is too large, then it might never reach the minimum 
 
 # Gradient Descent for linear regression
-Calculating derivatives for $w$, $$\begin{align*}\frac{d}{dw}J(w,b)=&\ \frac{d}{dw}\frac{1}{2m}\sum^{m}_{i=1}(\hat{y}^{(i)}-y^{(i)})^2\\=&\ \frac{d}{dw}\frac{1}{2m}\sum^{m}_{i=1}(wx^{(i)}+b-y^{(i)})^2\end{align*}$$
+Calculating derivatives   for $w$, $\begin{align*}\frac{d}{dw}J(w,b)=&\ \frac{d}{dw}\frac{1}{2m}\sum^{m}_{i=1}(\hat{y}^{(i)}-y^{(i)})^2\\=&\ \frac{d}{dw}\frac{1}{2m}\sum^{m}_{i=1}(wx^{(i)}+b-y^{(i)})^2\end{align*}$
 which is equal to 
-$$=\frac{1}{m}\sum^{m}_{i=1}(f_{w,b}(x^{(i)}-y^{(i)})x^{(i)}$$ and derivative for $b$, 
-$$\begin{align*}\frac{d}{db}J(w,b)=&\ \frac{d}{dw}\frac{1}{2m}\sum^{m}_{i=1}(\hat{y}^{(i)}-y^{(i)})^2\\=&\ \frac{d}{db}\frac{1}{2m}\sum^{m}_{i=1}(wx^{(i)}+b-y^{(i)})^2\end{align*}$$
+$\frac{1}{m}\sum^{m}_{i=1}(f_{w,b}(x^{(i)}-y^{(i)})x^{(i)}$ 
+
+and derivative for $b$, 
+$\begin{align*}\frac{d}{db}J(w,b)=&\ \frac{d}{dw}\frac{1}{2m}\sum^{m}_{i=1}(\hat{y}^{(i)}-y^{(i)})^2\\=&\ \frac{d}{db}\frac{1}{2m}\sum^{m}_{i=1}(wx^{(i)}+b-y^{(i)})^2\end{align*}$
 which is equal to 
-$$=\frac{1}{m}\sum^{m}_{i=1}(f_{w,b}(x^{(i)})-y^{(i)})$$
+$=\frac{1}{m}\sum^{m}_{i=1}(f_{w,b}(x^{(i)})-y^{(i)})$
 Psuedocode for gradient descent:
 
 ```python
