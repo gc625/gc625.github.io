@@ -1,5 +1,5 @@
 ---
-title: "{{Supervised Learning}}"
+title: "Supervised Learning"
 ---
 
 
