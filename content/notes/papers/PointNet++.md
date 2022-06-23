@@ -54,14 +54,15 @@ Lets call the sampling layer $SL$.
 #### Multi-scale grouping (MSG)
 - Due to nonuniformity of point clouds, we needs some more tricks to make feature learning more robust. 
 - One simple way is to applying grouping + pointnet multiple times then concat their features 
-![[notes/images/msg.png]]
+![[notes/images/msg.png|300]]
+
 
 
 #### Multi-resolution grouping (MRG)
 - MSG works, but its computationally expensive, so this is an alternative method 
 - Consider a layer for input of points, we first apply set abstraction layer (sampling + grouping + pointnet), to yield a vector of features $L_1$. We then  apply pointnet of the raw pointcloud (before set abstraction) to yield feature vector $L_2$. Then we concat the results $(L_1,L_2)$ 
 
-![[notes/images/mrg.png]]
+![[notes/images/mrg.png|300]]
 ### PointNet Layer
 essentially just a FC layer on each "ball" of points
 - Input $(N'\times K \times (3+C))$.
