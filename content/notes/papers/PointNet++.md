@@ -71,4 +71,9 @@ essentially just a FC layer on each "ball" of points
 - Output: $(N'\times (3+C'))$ 
 - Method: 
 	- for each point $x_j$ in a ball, transform it into a local coordinate frame relative to its centroid $\hat{x}$ $$x^{new}_j = x_j-\hat{x}$$
+	- Then we apply series of FC layers
+
+# Feature Propogation for Set Segmentation 
+
+
 
