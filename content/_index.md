@@ -2,7 +2,7 @@
 title: Gabriel Chan's website 
 ---
 
-Hi, this is my website where I keep my notes for research and class, and maybe projects in the future. 
+Hi, this is my website where I keep my notes for research, classes and personal projects. checkout my [github](https://github.com/gc625) too!
 
 # Research Notes
 - [PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space](notes/papers/PointNet++)
