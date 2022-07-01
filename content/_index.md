@@ -1,8 +1,10 @@
 ---
 title: Gabriel Chan's website 
+enableToc: true
 ---
 
 Hi, this is my website where I keep my notes for research, classes and personal projects. checkout my [github](https://github.com/gc625) too!
+
 
 # Research Notes
 ## Point Cloud Networks
