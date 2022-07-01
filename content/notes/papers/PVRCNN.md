@@ -1,5 +1,6 @@
 ---
 title: "PV-RCNN: Point-Voxel Feature Set Abstraction for 3D Object Detection"
+enableToc: true
 ---
 
 
@@ -88,4 +89,43 @@ where:
     \forall \tilde{f}_{j}^{(p)}\in\tilde{\mathcal{F}}
   \end{array}\right\}$$
 - $p_j-g_i$: local coordinates of features $\tilde{f_j}^{(p)}$ relative to grid point $g_i$ 
-- pointnet is used again to aggregate features: $$\tilde{f}_i^{(g)}=\max\left\{G\left(\mathcal{M}\left(\tilde{\Psi}\right)\right)\right\}$$ 
+- pointnet is used again to aggregate features: $$\tilde{f}_i^{(g)}=\max\left\{G\left(\mathcal{M}\left(\tilde{\Psi}\right)\right)\right\}$$
+- Two seperate MLP heads (256 dims) are then used for box refinement and confidence. 
+	- **Box Refinement:** for each of the RoI, it predicts the residuals compared to GT. $$L_{iou}=-y_k\log(\tilde{y}_k)-(1-y_k)\log(1-\tilde{y}_k)$$
+		- where $\tilde{y}_k$ is predicted score by network 
+	- **Confidence:** For the $k$th RoI, its confidence for a target $y_k$ is normalized to be between $[0,1]$ $$y_k=\min(1,\max(0,2\text{IoU}_k-0.5))$$
+		- Where $\text{IoU}_k$ is the IoU of the $k$th RoI w.r.t to tis GT box.
+	- Both are optimized via smooth-L1  
+
+
+# Training Loss
+- 3 Losses are used:
+	- Region proposal loss: $L_{rpn}$ $$L_{rpn}=\underbrace{L_{cls}}_{\text{focal loss}}+\beta \sum_{r\in\{x,y,z,l,w,h,\theta\}}\mathcal{L}_{smooth-L1}(\underbrace{\widehat{\Delta r^a}}_{\substack{\text{predicted} \\ \text{residual}}},\Delta r^a)$$
+		- predicted residual: $\widehat{\Delta r^a}$ 
+		- regression target: $\Delta r^a$
+	- Keypoint segmentation loss: $L_{seg}$ 
+		- loss calculation is explained in the [Predicted Keypoint Weighting](notes/papers/PVRCNN#Predicted Keypoint Weighting)
+	- Proposal refinement loss: $L_{rcnn}$ $$L_{rcnn}=L_{iou}+\sum_{r\in\{x,y,z,l,w,h,\theta\}}\mathcal{L}_{smooth-L1}(\underbrace{\widehat{\Delta r^p}}_{\substack{\text{predicted} \\ \text{residual}}},\Delta r^p)$$
+		- predicted box residual: $\widehat{\Delta r^p}$
+		- proposal regression target: $\Delta r^p$
+- Overall loss is sum of these three with equal loss weights. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -15,3 +15,4 @@ enabletoc: true
 - $C:$ Number of catergories 
 - $s_i:$ One hot labels 
 - $\hat{s_i}:$ predicted logits  
+- 
