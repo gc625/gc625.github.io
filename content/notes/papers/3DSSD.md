@@ -37,13 +37,108 @@ github #todo
 	4. MLP
 	5. MaxPool
 
-![[notes/images/3dssd_backbone.png]]
-#### SA1
+![[notes/images/3dssdbackbone.png]]
 
-$[16384 \times 4] \to [4096 \times 128]$
-
-####  SA2 
-$[4096 \times 128]\to [512\times 256],[512\times 256]$
+# Network walkthrough
+using the following network config: ![[notes/images/3dssdcfg.png]]
 
 
+## Network Input:
+- Radar pts of dim 4: $[x,y,z,RCS]$
+- **input size** is determined by `sample_points` in `DATA_PROCESSOR`: e.g.: 512 
+- then the feature dimension is 1 (RCS)
+
+## syntax
+$B$: is batch size
+## SA_Layer 1 (D-FPS)
+**Input:**
+- xyz: (B,512,3) <- `npoints=512` 
+- feature:  (B,1,512) <- 1 feature for 512 pts
+**Process**
+1. D-FPS to sample 512 points
+   
+3. Grouping: create `new_feature_list`
+	1. ball query with r=0.2, nsample=<font color="RoyalBlue">32</_font_>, MLP=\[16,16,<font color="red">32</_font_>\] 
+		- new_feauture: (B,<font color="red">32</_font_>,<font color="green">512</_font_>,<font color="RoyalBlue">32</_font_>) 
+	2. Maxpool and squeeze last channel `[-1]`
+		- new_feature: (B,<font color="red">32</_font_>,<font color="green">512</_font_>), append to `new_feature_list`
+		
+	3. ball query with r=0.4, nsample=<font color="RoyalBlue">32</_font_>, MLP=\[16,16,<font color="red">32</_font_>\] 
+		- new_feauture: (B,<font color="red">32</_font_>,<font color="green">512</_font_>,<font color="RoyalBlue">32</_font_>) 
+	4. Maxpool and squeeze last channel `[-1]`
+		- new_feature: (B,<font color="red">32</_font_>,<font color="green">512</_font_>) , append to `new_feature_list`
+
+	5. ball query with r=0.8, nsample=<font color="RoyalBlue">64</_font_>, MLP=\[16,16,<font color="red">32</_font_>\] 
+		- new_feauture: (B,<font color="red">32</_font_>,<font color="green">512</_font_>,<font color="RoyalBlue">64</_font_>) 
+	6. Maxpool and squeeze last channel `[-1]`
+		- new_feature: (B,<font color="red">32</_font_>,<font color="green">512</_font_>) , append to `new_feature_list`
+
+3. Aggregation Channel:
+	1. `torch.cat` all features along `dim=1`
+		-  new_feature: (B,<font color="red">32+32+64</_font_>,<font color="green">512</_font_>)
+	2. Conv1d with `in_channel=128`, `out_channel=64`, `kernel_size = 1`, batchnorm1d and ReLU 
+		- new_feature: (B,<font color="red">64</_font_>,<font color="green">512</_font_>)
+**Output:**
+- new_xyz: (B,512,3)
+- new_feature: (B,64,512) <- 64 features for 512 pts, etc... 
+
+## SA_Layer 2 (FS)
+**Input**
+- xyz: (B,512,3) <-`npoint=512`
+- feature: (B,64,512) <- 64 features from layer 1 
+**Process**
+1. Sample 512 points via D-FPS and F-FPS, then concat them together (total pts=<font color="green">1024</_font_>)
+2. Grouping
+	1. ball query with r=0.4, nsample=<font color="RoyalBlue">32</_font_>, then  MLP=\[64,64,<font color="red">128</_font_>\] 
+		- new_feauture: (B,<font color="red">128</_font_>+3,<font color="green">1024</_font_>,<font color="RoyalBlue">32</_font_>)  <- the +3 here is xyz of each sampled point
+	2. Maxpool and squeeze last channel `[-1]`
+		- new_feature: (B,<font color="red">128</_font_>,<font color="green">1024</_font_>), append to `new_feature_list`
+		  
+	3. ball query with r=0.8, nsample=<font color="RoyalBlue">32</_font_>, then MLP=\[64,64,<font color="red">128</_font_>\] 
+		- new_feauture: (B,<font color="red">128</_font_>+3,<font color="green">1024</_font_>,<font color="RoyalBlue">32</_font_>)  <- the +3 here is xyz of each sampled point
+	4. Maxpool and squeeze last channel `[-1]`
+		- new_feature: (B,<font color="red">128</_font_>,<font color="green">1024</_font_>), append to `new_feature_list`
+		  
+	5. ball query with r=1.6, nsample=<font color="RoyalBlue">64</_font_>, then MLP=\[64,96,<font color="red">128</_font_>\] 
+		- new_feauture: (B,<font color="red">128</_font_>+3,<font color="green">1024</_font_>,<font color="RoyalBlue">64</_font_>)  <- the +3 here is xyz of each sampled point
+	6. Maxpool and squeeze last channel `[-1]`
+		- new_feature: (B,<font color="red">128</_font_>,<font color="green">1024</_font_>), append to `new_feature_list`
+ 
+3. Aggregation Channel:
+	1. `torch.cat` all features along `dim=1`
+		-  new_feature: (B,<font color="red">128+128+128</_font_>,<font color="green">1024</_font_>)
+	2. Conv1d with `in_channel=384`, `out_channel=128`, `kernel_size = 1`, batchnorm1d and ReLU 
+		- new_feature: (B,<font color="red">128</_font_>,<font color="green">1024</_font_>)
+
+**Output**
+- new_xyz: (B,1024,3)
+- new_feature: (B,128,1024)
+
+## SA_Layer 3 (F-FPS, D-FPS) 
+LAYER
+**Input**
+- xyz: (B,1024,3)
+- feature: (B,128,1024)
+**Output**
+- new_xyz: (B,512,3)
+- new_feature: (B,256,5112)
+
+## SA_Layer 4 (F-FPS, D-FPS)
+### THIS IS THE FIRST PART OF CANDIDATE GENERATION
+**Input:**
+- xyz: (B,,)
+- feature:
+**Output:**
+- new_xyz: 
+- new_feature:
+
+# Vote_Layer (n/a)
+ ### THIS IS THE SECOND PART OF CANDIDATE GENERATION 
+ 
+**Input:**
+- xyz:
+- feature:
+**Output:**
+- new_xyz: 
+- new_feature:
 
