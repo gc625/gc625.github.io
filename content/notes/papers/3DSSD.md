@@ -54,6 +54,7 @@ $B$: is batch size
 **Input:**
 - xyz: (B,512,3) <- `npoints=512` 
 - feature:  (B,1,512) <- 1 feature for 512 pts
+
 **Process**
 1. D-FPS to sample 512 points
    
