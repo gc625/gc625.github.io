@@ -83,7 +83,6 @@ $B$: is batch size
 	2. Conv1d with `in_channel=128`, `out_channel=64`, `kernel_size = 1`, batchnorm1d and ReLU 
 		- new_feature: (B,<span style="color: red">64</span>,<span style="color: green">512</span>)
 
-
 **Output:**
 - new_xyz: (B,512,3)
 - new_feature: (B,64,512) <- 64 features for 512 pts, etc... 
@@ -92,6 +91,7 @@ $B$: is batch size
 **Input**
 - xyz: (B,512,3) <-`npoint=512`
 - feature: (B,64,512) <- 64 features from layer 1 
+  
 **Process**
 1. Sample 512 points via D-FPS and F-FPS, then concat them together (total pts=<span style="color: green">1024</span>)
 2. Grouping
