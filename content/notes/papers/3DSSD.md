@@ -33,11 +33,14 @@ github #todo
 - want to output $N_{i+1}$ points, where $N_{i+1}$ points are subset of the $N_i$ points
 	1. F-FPS$: N_i \to \frac{N_{i+1}}{2}$ #Q
 	2. D-FPS:$N_i \to \frac{N_{i+1}}{2}$ #Q
-	3. [notes/papers/PointNet++#Grouping Layer](grouping operation )
+	3. [grouping operation](notes/papers/PointNet++#Grouping Layer)
 	4. MLP
 	5. MaxPool
 
 ![[notes/images/3dssdbackbone.png]]
+
+
+
 
 # Network walkthrough
 using the following network config: ![[notes/images/3dssdcfg.png]]
