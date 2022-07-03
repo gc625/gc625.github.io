@@ -6,7 +6,6 @@ enableToc: true
 Hi, this is my website where I keep my notes for research, classes and personal projects. checkout my [github](https://github.com/gc625) too!
 
 
-<<<<<<< HEAD
 # Research Notes
 ## Point Cloud Networks
 - [PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space](notes/papers/PointNet++)
