@@ -58,26 +58,30 @@ $B$: is batch size
 1. D-FPS to sample 512 points
    
 3. Grouping: create `new_feature_list`
-	1. ball query with r=0.2, nsample=<font color="RoyalBlue">32</_font_>, MLP=\[16,16,<font color="red">32</_font_>\] 
-		- new_feauture: (B,<font color="red">32</_font_>,<font color="green">512</_font_>,<font color="RoyalBlue">32</_font_>) 
+	1. ball query with r=0.2, nsample=<span style="color: RoyalBlue">32</span>, MLP=\[16,16,<span style="color: red">32</span>\] 
+		- new_feauture: (B,<span style="color: red">32</span>,<span style="color: green">512</span>,<span style="color: RoyalBlue">32</span>) 
 	2. Maxpool and squeeze last channel `[-1]`
-		- new_feature: (B,<font color="red">32</_font_>,<font color="green">512</_font_>), append to `new_feature_list`
+		- new_feature: (B,<span style="color: red">32</span>,<span style="color: green">512</span>), append to `new_feature_list`
 		
-	3. ball query with r=0.4, nsample=<font color="RoyalBlue">32</_font_>, MLP=\[16,16,<font color="red">32</_font_>\] 
-		- new_feauture: (B,<font color="red">32</_font_>,<font color="green">512</_font_>,<font color="RoyalBlue">32</_font_>) 
+	3. ball query with r=0.4, nsample=<span style="color: RoyalBlue">32</span>, MLP=\[16,16,<span style="color: red">32</span>\] 
+		- new_feauture: (B,<span style="color: red">32</span>,<span style="color: green">512</span>,<span style="color: RoyalBlue">32</span>) 
 	4. Maxpool and squeeze last channel `[-1]`
-		- new_feature: (B,<font color="red">32</_font_>,<font color="green">512</_font_>) , append to `new_feature_list`
+		- new_feature: (B,<span style="color: red">32</span>,<span style="color: green">512</span>) , append to `new_feature_list`
 
-	5. ball query with r=0.8, nsample=<font color="RoyalBlue">64</_font_>, MLP=\[16,16,<font color="red">32</_font_>\] 
-		- new_feauture: (B,<font color="red">32</_font_>,<font color="green">512</_font_>,<font color="RoyalBlue">64</_font_>) 
+	5. ball query with r=0.8, nsample=<span style="color: RoyalBlue">64</span>, MLP=\[16,16,<span style="color: red">32</span>\] 
+		- new_feauture: (B,<span style="color: red">32</span>,<span style="color: green">512</span>,<span style="color: RoyalBlue">64</span>) 
 	6. Maxpool and squeeze last channel `[-1]`
-		- new_feature: (B,<font color="red">32</_font_>,<font color="green">512</_font_>) , append to `new_feature_list`
+		- new_feature: (B,<span style="color: red">32</span>,<span style="color: green">512</span>) , append to `new_feature_list`
 
 3. Aggregation Channel:
 	1. `torch.cat` all features along `dim=1`
-		-  new_feature: (B,<font color="red">32+32+64</_font_>,<font color="green">512</_font_>)
+		-  new_feature: (B,<span style="color:red">32+32+64</span>,<span style="color: green">512</span>)
 	2. Conv1d with `in_channel=128`, `out_channel=64`, `kernel_size = 1`, batchnorm1d and ReLU 
-		- new_feature: (B,<font color="red">64</_font_>,<font color="green">512</_font_>)
+		- new_feature: (B,<span style="color: red">64</span>,<span style="color: green">512</span>)
+		  ---
+title: "{{title}}"
+enableToc: true
+---
 **Output:**
 - new_xyz: (B,512,3)
 - new_feature: (B,64,512) <- 64 features for 512 pts, etc... 
@@ -87,28 +91,28 @@ $B$: is batch size
 - xyz: (B,512,3) <-`npoint=512`
 - feature: (B,64,512) <- 64 features from layer 1 
 **Process**
-1. Sample 512 points via D-FPS and F-FPS, then concat them together (total pts=<font color="green">1024</_font_>)
+1. Sample 512 points via D-FPS and F-FPS, then concat them together (total pts=<span style="color: green">1024</span>)
 2. Grouping
-	1. ball query with r=0.4, nsample=<font color="RoyalBlue">32</_font_>, then  MLP=\[64,64,<font color="red">128</_font_>\] 
-		- new_feauture: (B,<font color="red">128</_font_>+3,<font color="green">1024</_font_>,<font color="RoyalBlue">32</_font_>)  <- the +3 here is xyz of each sampled point
+	1. ball query with r=0.4, nsample=<span style="color: RoyalBlue">32</span>, then  MLP=\[64,64,<span style="color: red">128</span>\] 
+		- new_feauture: (B,<span style="color: red">128</span>+3,<span style="color: green">1024</span>,<span style="color: RoyalBlue">32</span>)  <- the +3 here is xyz of each sampled point
 	2. Maxpool and squeeze last channel `[-1]`
-		- new_feature: (B,<font color="red">128</_font_>,<font color="green">1024</_font_>), append to `new_feature_list`
+		- new_feature: (B,<span style="color: red">128</span>,<span style="color: green">1024</span>), append to `new_feature_list`
 		  
-	3. ball query with r=0.8, nsample=<font color="RoyalBlue">32</_font_>, then MLP=\[64,64,<font color="red">128</_font_>\] 
-		- new_feauture: (B,<font color="red">128</_font_>+3,<font color="green">1024</_font_>,<font color="RoyalBlue">32</_font_>)  <- the +3 here is xyz of each sampled point
+	3. ball query with r=0.8, nsample=<span style="color: RoyalBlue">32</span>, then MLP=\[64,64,<span style="color: red">128</span>\] 
+		- new_feauture: (B,<span style="color: red">128</span>+3,<span style="color: green">1024</span>,<span style="color: RoyalBlue">32</span>)  <- the +3 here is xyz of each sampled point
 	4. Maxpool and squeeze last channel `[-1]`
-		- new_feature: (B,<font color="red">128</_font_>,<font color="green">1024</_font_>), append to `new_feature_list`
+		- new_feature: (B,<span style="color: red">128</span>,<span style="color: green">1024</span>), append to `new_feature_list`
 		  
-	5. ball query with r=1.6, nsample=<font color="RoyalBlue">64</_font_>, then MLP=\[64,96,<font color="red">128</_font_>\] 
-		- new_feauture: (B,<font color="red">128</_font_>+3,<font color="green">1024</_font_>,<font color="RoyalBlue">64</_font_>)  <- the +3 here is xyz of each sampled point
+	5. ball query with r=1.6, nsample=<span style="color: RoyalBlue">64</span>, then MLP=\[64,96,<span style="color: red">128</span>\] 
+		- new_feauture: (B,<span style="color: red">128</span>+3,<span style="color: green">1024</span>,<span style="color: RoyalBlue">64</span>)  <- the +3 here is xyz of each sampled point
 	6. Maxpool and squeeze last channel `[-1]`
-		- new_feature: (B,<font color="red">128</_font_>,<font color="green">1024</_font_>), append to `new_feature_list`
+		- new_feature: (B,<span style="color: red">128</span>,<span style="color: green">1024</span>), append to `new_feature_list`
  
 3. Aggregation Channel:
 	1. `torch.cat` all features along `dim=1`
-		-  new_feature: (B,<font color="red">128+128+128</_font_>,<font color="green">1024</_font_>)
+		-  new_feature: (B,<span style="color:red">128+128+128</span>,<span style="color: green">1024</span>)
 	2. Conv1d with `in_channel=384`, `out_channel=128`, `kernel_size = 1`, batchnorm1d and ReLU 
-		- new_feature: (B,<font color="red">128</_font_>,<font color="green">1024</_font_>)
+		- new_feature: (B,<span style="color: red">128</span>,<span style="color: green">1024</span>)
 
 **Output**
 - new_xyz: (B,1024,3)

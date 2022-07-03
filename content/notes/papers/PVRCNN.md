@@ -24,7 +24,7 @@ enableToc: true
 		- $2\times$ means the voxel size (or $L/W/H$?) is $2\times$ larger, so there are few voxels.   
 - One we have the the $8\times$ downsampled feature volumes $\left(\frac{L}{8}\times \frac{W}{8}\times \frac{H}{8}\right)$ 
 	- we stack the voxels along the $Z$ axis to get a $\frac{L}{8}\times \frac{W}{8}$ bird-view feature maps.
-	- <font color="red">what is stacking here </_font_>
+	- <span style="color:red">what is stacking here </span>
 - Each class has $2\times \frac{L}{8} \times \frac{W}{8}$ 3D anchor boxes, and two anchors of $0^\circ$ and $90^\circ$ orientations. each anchor box is evaluated for each pixel of the BEV feature map.
 
 
@@ -65,7 +65,7 @@ where:
 # Extended VSA Module
 - With the 8x downsampled 2D BEV feature map, and original point cloud **P**, put **P** through eq 2. We call these features $f_i^{(raw)}$ 
 - Also project each $p_i$ onto the BEV map, and use bilinear interpolation to get $f_i^{(bev)}$ from BEV feature map
-	- <font color="red">How exactly?</_font_>
+	- <span style="color:red">How exactly?</span>
  - Then finally concatinate all these features together:$$f_i^{(p)}=\left[f_{i}^{(pv)},f_i^{(raw)},f_{i}^{(bev)}\right], \text{ for }i=1,\ldots,n$$
 
 
