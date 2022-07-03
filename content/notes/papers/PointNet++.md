@@ -54,6 +54,11 @@ Lets call the sampling layer $SL$.
 #### Multi-scale grouping (MSG)
 - Due to nonuniformity of point clouds, we needs some more tricks to make feature learning more robust. 
 - One simple way is to applying grouping + pointnet multiple times then concat their features 
+- **Dilated Group:** implementation setting where you set a min radius.
+	- eg: $r=[0.2,0.4,0.8]$, then 
+	- for $r=0.2$, sample within radius $[0,0.2]$
+	- for $r=0.4$, sample within radius $[0.2,0.4]$
+	- for $r=0.8$, sample within radius $[0.4,0.8]$
 ![[notes/images/msg.png|300]]
 
 

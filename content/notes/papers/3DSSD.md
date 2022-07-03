@@ -121,7 +121,9 @@ $B$: is batch size
 - new_feature: (B,128,1024)
 
 ## SA_Layer 3 (F-FPS, D-FPS) 
-LAYER
+- Not sure why we use F-FPS and D-FPS instead of just FS, I think this is to make sure the set of points sampled $F\text{-}FPS \cap D\text{-}FPS =\emptyset$ ![[notes/images/samplingrange.png]]
+	- so in this layer, F-FPS samples `[0:512]` pts, then D-FPS samples from `[512:1024]`
+	- but then 
 **Input**
 - xyz: (B,1024,3)
 - feature: (B,128,1024)
