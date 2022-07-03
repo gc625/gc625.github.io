@@ -59,7 +59,7 @@ $B$: is batch size
    
 3. Grouping: create `new_feature_list`
 	1. ball query with r=0.2, nsample=<span style="color: RoyalBlue">32</span>, MLP=\[16,16,<span style="color: red">32</span>\] 
-		new_feauture: (B,<span style="color: red">32</span>,<span style="color: green">512</span>,<span style="color: RoyalBlue">32</span>) 
+		- new_feauture: (B,<span style="color: red">32</span>,<span style="color: green">512</span>,<span style="color: RoyalBlue">32</span>) 
 	2. Maxpool and squeeze last channel `[-1]`
 		- new_feature: (B,<span style="color: red">32</span>,<span style="color: green">512</span>), append to `new_feature_list`
 		
