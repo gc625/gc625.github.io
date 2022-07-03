@@ -78,10 +78,8 @@ $B$: is batch size
 		-  new_feature: (B,<span style="color:red">32+32+64</span>,<span style="color: green">512</span>)
 	2. Conv1d with `in_channel=128`, `out_channel=64`, `kernel_size = 1`, batchnorm1d and ReLU 
 		- new_feature: (B,<span style="color: red">64</span>,<span style="color: green">512</span>)
-		  ---
-title: "{{title}}"
-enableToc: true
----
+
+
 **Output:**
 - new_xyz: (B,512,3)
 - new_feature: (B,64,512) <- 64 features for 512 pts, etc... 
