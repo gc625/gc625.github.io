@@ -1,5 +1,5 @@
 ---
-title: "Gabriel Chan's website"
+title: "{{Gabriel Chan's website}}"
 enableToc: true
 ---
 
