@@ -8,7 +8,7 @@ github #todo
 
 ## Main Ideas:
 -  Introduced **Feature-Farthest Point Sampling (F-FPS)**
-- Introduced new sampling method called **Fusion Sampling** in [notes/papers/PointNet++#Set Abstraction SA Layer](Set Abstraction Layer)
+- Introduced new sampling method called **Fusion Sampling** in [Set Abstraction Layer](notes/papers/PointNet++)
 
 
 ### Feature-Farthest Point Sampling (F-FPS)
