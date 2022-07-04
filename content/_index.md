@@ -15,7 +15,7 @@ Hi, this is my website where I keep my notes for research, classes and personal 
 
 ### Two Stage Detectors
 - [RVRCNN](notes/papers/PVRCNN)
-  
+
 ### Attention on point clouds
 - [3DETR: An End-to-End Transformer Model for 3D Object Detection](notes/papers/3DETR)
 - [Attentional PointNet for 3D-Object Detection in Point Clouds](notes/papers/attentionalpointnet)
