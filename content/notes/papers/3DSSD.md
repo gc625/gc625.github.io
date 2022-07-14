@@ -162,7 +162,7 @@ $B$: is batch size
 - new_feature: (B,256,512)
 
 ### SA_Layer 4 (F-FPS, D-FPS)
-### THIS IS THE FIRST PART OF CANDIDATE GENERATION
+ **THIS IS THE FIRST PART OF CANDIDATE GENERATION**
 **Input**
 - xyz: (B,512,3)
 - feature: (B,256,512)
@@ -174,7 +174,7 @@ $B$: is batch size
 - new_feature: (B,256,128)
 
 ### Vote_Layer (n/a)
- ### THIS IS THE SECOND PART OF CANDIDATE GENERATION 
+  **THIS IS THE SECOND PART OF CANDIDATE GENERATION** 
  
 **Input:**
 - xyz: (B,128,3)

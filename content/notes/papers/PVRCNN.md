@@ -33,8 +33,7 @@ enableToc: true
 - Denote: $$\mathcal{F}^{(l_k)}=\{f_1^{(l_k)},\ldots,f_{N_k}^{(l_k)}\}: \text{set of voxel-wise feature vectors at in }k\text{th level}$$ $$\mathcal{V}^{(l_k)}=\{v_1^{(l_k)},\ldots,v_{N_k}^{(l_k)}\}: \text{set o}$$ 
 - Where $N_k$ is the number of non-empty voxels in the $k$th level
 
-For each keypoint $p_i$ we find neighboarding non-empty voxels at the $k$th level within radius $r_k$. The resulting set of voxel-wise features vectors is:$$
-S_{i}^{(l_k)}=
+For each keypoint $p_i$ we find neighboarding non-empty voxels at the $k$th level within radius $r_k$. The resulting set of voxel-wise features vectors is:$$S_{i}^{(l_k)}=
   \left\{ 
     [f_j^{(l_k)};\underbrace{v_{j}^{(l_k)}-p_i}_{\text{relative coords}}]^T
   \;\middle|\;
