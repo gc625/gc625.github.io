@@ -34,15 +34,16 @@ enableToc: true
 - Where $N_k$ is the number of non-empty voxels in the $k$th level
 
 For each keypoint $p_i$ we find neighboarding non-empty voxels at the $k$th level within radius $r_k$. The resulting set of voxel-wise features vectors is:$$S_{i}^{(l_k)}=
-  \left\{ 
-    [f_j^{(l_k)};\underbrace{v_{j}^{(l_k)}-p_i}_{\text{relative coords}}]^T
-  \;\middle|\;
-  \begin{array}{@{}l@{}}
-    \lVert v_{j}^{(l_k)}-p_i\rVert^2 < r_{k}, \\[1ex]
-    \forall v_{j}^{(l_k)}\in \mathcal{V}^{(l_k)}, \\[1ex]
-    \forall f_{j}^{(l_k)}\in\mathcal{F}^{(l_k)}
-  \end{array}
-  \right\}$$
+      \left \{
+        [f_j^{(lk)};\underbrace{v{j}^{(l_k)}-
+        p_i}_{\text{relative coords}}]^T
+      \; \middle | \;
+      \begin{array}{cc}
+        \lVert v_{j}^{(l_k)}-p_i \rVert^2 < r_{k}, \\[1ex]
+        \forall v_{j}^{(l_k)}\in \mathcal{V}^{(l_k)}, \\[1ex]
+        \forall f{j}^{(l_k)}\in\mathcal{F}^{(l_k)}
+      \end{array}
+      \right\}$$
   where:
   - $v_{j}^{(l_k)}-p_i$ : relative coordinates/location of $f_j^{(l_k)}$
   - $f_j^{(l_k)}$: semantic voxel feature
@@ -88,7 +89,7 @@ where:
     \forall \tilde{f}_{j}^{(p)}\in\tilde{\mathcal{F}}
   \end{array}\right\}$$
 - $p_j-g_i$: local coordinates of features $\tilde{f_j}^{(p)}$ relative to grid point $g_i$ 
-- pointnet is used again to aggregate features: $$\tilde{f}_i^{(g)}=\max\left\{G\left(\mathcal{M}\left(\tilde{\Psi}\right)\right)\right\}$$
+- pointnet is used again to aggregate features: $$f_i^{(pv_k)}=\max \left\{ G \left( \mathcal M \left( S_i^{(l_k)} \right)\right) \right\}$$
 - Two seperate MLP heads (256 dims) are then used for box refinement and confidence. 
 	- **Box Refinement:** for each of the RoI, it predicts the residuals compared to GT. $$L_{iou}=-y_k\log(\tilde{y}_k)-(1-y_k)\log(1-\tilde{y}_k)$$
 		- where $\tilde{y}_k$ is predicted score by network 
