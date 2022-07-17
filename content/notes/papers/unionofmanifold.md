@@ -7,7 +7,4 @@ enableToc: true
 # Main Ideas
 
 - The manifold hypothesis states that high-dimensional data of interest often lives in an unknown lower-dimensional manifold embedded in ambient space
-- ---
-title: "title"
-enableToc: true
----
+ 

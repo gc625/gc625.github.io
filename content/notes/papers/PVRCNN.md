@@ -89,7 +89,7 @@ where:
     \forall \tilde{f}_{j}^{(p)}\in\tilde{\mathcal{F}}
   \end{array}\right\}$$
 - $p_j-g_i$: local coordinates of features $\tilde{f_j}^{(p)}$ relative to grid point $g_i$ 
-- pointnet is used again to aggregate features: $$f_i^{(pv_k)}=\max \left\{ G \left( \mathcal M \left( S_i^{(l_k)} \right)\right) \right\}$$
+- pointnet is used again to aggregate features: $$\tilde{f}_i^{(g)}=\max\left\{G\left(\mathcal\{M\}\left(\tilde\{\Psi\}\right)\right)\right\}$$
 - Two seperate MLP heads (256 dims) are then used for box refinement and confidence. 
 	- **Box Refinement:** for each of the RoI, it predicts the residuals compared to GT. $$L_{iou}=-y_k\log(\tilde{y}_k)-(1-y_k)\log(1-\tilde{y}_k)$$
 		- where $\tilde{y}_k$ is predicted score by network 
