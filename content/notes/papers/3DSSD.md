@@ -231,7 +231,7 @@ $B$: is batch size
 **note**
 - the 30 is:
 	- (x,y,z,dx,dy,dz), + 2* (12 angle bins ) 
-		- angle bins * 2 because positive and negative angles? 
+		- $\times 2$ because angle bin and confidence
 
 ## Box classification 
 - MLP = \[<span style="color: RoyalBlue">256</span>,<span style="color: LightBlue">256</span>\]
