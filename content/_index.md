@@ -3,10 +3,13 @@ title: "Gabriel Chan's website"
 enableToc: true
 ---
 
-Hi, this is my website where I keep my notes for research, classes and personal projects. checkout my [github](https://github.com/gc625) too!
+Hi, this is my website where I keep my notes for research, and studying. currently at [kodifly](https://www.kodifly.com/)
 
 
 # Research Notes
+## SLAM 
+
+
 ## Point Cloud Networks
 - [PointNet++: Deep Hierarchical Feature Learning on Point Sets in a Metric Space](notes/papers/PointNet++)
 ### Single Stage Detectors 
