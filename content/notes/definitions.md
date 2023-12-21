@@ -54,3 +54,14 @@ $$d(x_m,x_n)<\varepsilon$$
 
 
 
+# Groups
+A group is an algebraic structure of one set plus one operator. We denote the set as $A$ and the operation as $\cdot$, then the group can be denoted as $G=(A,\cdot)$. We say $G$ is a \textit{group} if the operation satisfies the following conditions:
+
+- Closure:   $\forall a_1, a_2 \in A, \ a_1 \cdot a_2 \in A$
+- Combination: $\forall a_1, a_2, a_3 \in A, \ (a_1 \cdot a_2) \cdot a_3 = a_1 \cdot ( a_2 \cdot a_3)$
+- Unit element: $\exists a_0 \in A, \ \mathrm{s.t.} \ \forall a \in A, \ a_0 \cdot a = a \cdot a_0 = a$.
+- Inverse element: $\forall a \in A, \ \exists a^{-1} \in A, \ st \ a \cdot a^{-1} = a_0$.
+
+
+# Lie Group
+A group with continuous elements 
