@@ -9,10 +9,11 @@ $$
 $$
 Special Euclidean Group: the group of transformation matrices
 $$
-\mathrm{SE}(3) = \left\{ \mathbf{T} = \left[ {\begin{array}{*{20}{c}}
+\mathrm{SE}(3) = \left\{ \mathbf{T} = 
+\begin{bmatrix}
 \mathbf{R} & \mathbf{t} \\
 {{\mathbf{0}^T}} & 1
-\end{array}} \right]
+\end{bmatrix}
 \in \mathbb{R}^{4 \times 4} | \mathbf{R} \in \mathrm{SO}(3), \mathbf{t} \in \mathbb{R}^3\right\}
 $$
 
@@ -31,4 +32,5 @@ $$
 \dot{\mathbf{R}}(t)\mathbf{R}(t)^T+\mathbf{R}(t)\dot{\mathbf{R}}(t)^T=0
 $$
 which equals
+
 
